@@ -1,7 +1,15 @@
-from flask import Flask, request
+from flask import Flask, request, send_file
 from csv import reader, writer
 import os.path
 app = Flask(__name__)
+
+@app.route("/", methods=['GET'])
+def index():
+    if os.path.isfile('flashcards.html'):
+        return send_file('flashcards.html')
+    else:
+        return "not found"
+
 
 @app.route("/data", methods=['POST'])
 def hello():
