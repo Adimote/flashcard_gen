@@ -1,6 +1,6 @@
 # Flashcard app
 
-This program generates a reveal.js style flashcard application, and records the number of times each card is 'gotten', sorting by the most commonly 'got' cards last, but otherwise in a random order.
+This program generates a random reveal.js slideshow from given flashcards, it records when you remembered a card before you saw it. The next time you generate it will show least-remembered first.
 
 ## Dependencies
 
