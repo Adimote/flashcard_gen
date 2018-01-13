@@ -12,5 +12,5 @@ clean:
 	rm -f flashcards.html
 	rm -f flashcards_out.md
 
-server:
+record:
 	export FLASK_APP=flaskstuff.py; python -m flask run
