@@ -24,7 +24,7 @@ def main(stdscr=None):
         for line in f:
             if not line or line == '\n':
                 continue
-            if '#' in line:
+            if line.strip().startswith('#'):
                 if header_stack and body:
                     add_card(header_stack,body)
                     body = []
