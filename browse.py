@@ -9,6 +9,9 @@ from csv import reader
 
 hashes = re.compile(r'#')
 
+def urlify(s):
+    return re.sub(r'[^a-zA-Z]+','-',s.lower())
+
 def main(stdscr=None):
     cards = []
     card_strings = []
@@ -46,7 +49,7 @@ def main(stdscr=None):
         for i,card in enumerate(cards):
             # Build a tree of sections
             titles = card[0]
-            title_text = titles[0] + "".join([" ({})".format(c)  for c in titles[1:]])
+            title_text = titles[0] + "".join([" ([{}](/#/{}))".format(c,urlify(c))  for c in titles[1:]])
             front_page = "# " + title_text + "\n"
             back_page = "### " + title_text + "\n"+''.join(card[1])+'\n'
             card_strings.append(front_page)
