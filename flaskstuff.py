@@ -19,10 +19,10 @@ def hello():
         with open('gotits.csv','r') as f:
             r = reader(f)
             data = {q:int(c) for q,c in r}
-            for key,value in request.form.items():
-                data.setdefault(key,0)
-                data[key] += 1
-                print(f"{key}: {data[key]} {value}")
+    for key,value in request.form.items():
+        data.setdefault(key,0)
+        data[key] += 1
+        print(f"{key}: {data[key]} {value}")
     with open('gotits.csv','w') as f:
         w = writer(f)
         for key,value in data.items():
