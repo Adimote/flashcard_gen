@@ -22,7 +22,7 @@ def main(stdscr=None):
         cur_card = None
         body = []
         for line in f:
-            if not line:
+            if not line or line == '\n':
                 continue
             if '#' in line:
                 if header_stack and body:
@@ -47,8 +47,8 @@ def main(stdscr=None):
             # Build a tree of sections
             titles = card[0]
             title_text = titles[0] + "".join([" ({})".format(c)  for c in titles[1:]])
-            front_page = "\n# " + title_text + "\n"
-            back_page = "\n## " + title_text + "\n"+'\n'.join(card[1])
+            front_page = "# " + title_text + "\n"
+            back_page = "### " + title_text + "\n"+''.join(card[1])+'\n'
             card_strings.append(front_page)
             card_strings.append(back_page)
             card_strings.append(f"""
