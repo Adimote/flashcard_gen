@@ -25,7 +25,7 @@ def main(stdscr=None):
         cur_card = None
         body = []
         for line in f:
-            if not line or line == '\n':
+            if not line:
                 continue
             if line.strip().startswith('#'):
                 if header_stack and body:
