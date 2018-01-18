@@ -28,7 +28,7 @@ def main(stdscr=None):
     cards = []
     card_strings = []
     card_strings.append("---")
-    card_strings.append("title: flashcards")
+    card_strings.append("pagetitle: Flashcards")
     card_strings.append("seed: {}".format(seed))
     card_strings.append("---")
     def add_card(header_stack,body):
