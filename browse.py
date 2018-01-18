@@ -2,21 +2,34 @@ import re
 import math
 import os
 import time
+import argparse
 import collections
 import html
+import sys
 import random
 from csv import reader
 
 hashes = re.compile(r'#')
 
+seed = random.randrange(100)
+random.seed(seed)
+
 def urlify(s):
     return re.sub(r'[^a-zA-Z]+','-',s.lower())
 
 def main(stdscr=None):
+    global seed
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--seed", default=None)
+    args = parser.parse_args()
+    if args.seed:
+        seed = args.seed
+        random.seed(args.seed)
     cards = []
     card_strings = []
     card_strings.append("---")
     card_strings.append("title: flashcards")
+    card_strings.append("seed: {}".format(seed))
     card_strings.append("---")
     def add_card(header_stack,body):
         cards.append((header_stack[::-1],body))
